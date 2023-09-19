@@ -1,21 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Mazer Admin Dashboard</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}">
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
-    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css' %}">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon">
 </head>
 
 <body>
@@ -27,7 +29,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="dashboard.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="dashboard.html"><img src="{% static 'images/logo/logo.png' %}" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -103,103 +105,58 @@
                             </form>  
                         </div>
                         <!-- FIM BARRA DE PESQUISA -->
-
                         <div class="row">
-                            <!-- QUADROS -->
-                            <div class="col col-lg-4">
-                                <div class="card">
-                                    <div class="m-2">
-                                        <h4 class="mb-0">Profile Visit</h4>
-                                        <p class="text-justify">Categoria</p>
-                                        <img src="assets\images\samples\default image.png" class="img-fluid rounded" alt="Responsive image">
-                                        <div class= "mt-2">
-                                        </div>
-                                        <div class= "mt-2">
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid...</p>
-                                        </div>
-                                        <div class= "mt-2 btn-primary active text-center rounded">R$ 29,00</div>
-                                        <div class="row">
-                                            <a class="col" href=""><div class="mt-2 btn-success text-center rounded cursor-pointer">Editar</div></a>
-                                            <a class="col" href=""><div class="mt-2 btn-danger text-center rounded cursor-pointer">Deletar</div></a>
-                                        </div>
-                                        <hr>
-                                        <div class= "mt-2">emailpadrão@teste.com</div>
-                                        <div class= "mt-2">
-                                            <p class="text-right" style="text-align: right;">AF4G2D</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FIM QUADROS -->
-
-                            <!-- QUADROS -->
-                            <div class="col col-lg-4">
-                                <div class="card">
-                                    <div class="m-2">
-                                        <h4 class="mb-0">Profile Visit</h4>
-                                        <p class="text-justify">Categoria</p>
-                                        <img src="assets\images\samples\default image.png" class="img-fluid rounded" alt="Responsive image">
-                                        <div class= "mt-2">
-                                        </div>
-                                        <div class= "mt-2">
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid...</p>
-                                        </div>
-                                        <div class= "mt-2 btn-primary active text-center rounded">R$ 29,00</div>
-                                        <div class="row">
-                                            <a class="col" href=""><div class="mt-2 btn-success text-center rounded cursor-pointer">Editar</div></a>
-                                            <a class="col" href=""><div class="mt-2 btn-danger text-center rounded cursor-pointer">Deletar</div></a>
-                                        </div>
-                                        <hr>
-                                        <div class= "mt-2">emailpadrão@teste.com</div>
-                                        <div class= "mt-2">
-                                            <p class="text-right" style="text-align: right;">AF4G2D</p>
+                            {% for p in produtos %}
+                                <div class="col col-lg-4">
+                                    
+                                    <div class="card">
+                                        <div class="m-2">
+                                            <h4 class="mb-0">{{p.nome}}</h4>
+                                            <p class="text-justify">Categoria</p>
+                                            <img src="{{ p.foto_produto.url }}" class="img-fluid rounded" alt="Responsive image">
+                                            <div class= "mt-2">
+                                            </div>
+                                            <div class= "mt-2">
+                                                <p class="text-justify">{{p.descricao}}</p>
+                                            </div>
+                                            <div class= "mt-2 btn-primary active text-center rounded">R$ {{p.preco}}</div>
+                                            <div class="row">
+                                                <a class="col" href="{% url 'editar_produto' p.id_produto %}"><div class="mt-2 btn-success text-center rounded cursor-pointer">Editar</div></a>
+                                                <a class="col" href=""><div class="mt-2 btn-danger text-center rounded cursor-pointer">Deletar</div></a>
+                                            </div>
+                                            <hr>
+                                            <div class= "mt-2">{{p.email}}</div>
+                                            <div class= "mt-2">
+                                                <p class="text-right" style="text-align: right;">AF4G2D</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
-                            <!-- FIM QUADROS -->
-                            
-                            <!-- QUADROS -->
-                            <div class="col col-lg-4">
-                                <div class="card">
-                                    <div class="m-2">
-                                        <h4 class="mb-0">Profile Visit</h4>
-                                        <p class="text-justify">Categoria</p>
-                                        <img src="assets\images\samples\default image.png" class="img-fluid rounded" alt="Responsive image">
-                                        <div class= "mt-2">
-                                        </div>
-                                        <div class= "mt-2">
-                                            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid...</p>
-                                        </div>
-                                        <div class= "mt-2 btn-primary active text-center rounded">R$ 29,00</div>
-                                        <div class="row">
-                                            <a class="col" href=""><div class="mt-2 btn-success text-center rounded cursor-pointer">Editar</div></a>
-                                            <a class="col" href=""><div class="mt-2 btn-danger text-center rounded cursor-pointer">Deletar</div></a>
-                                        </div>
-                                        <hr>
-                                        <div class= "mt-2">emailpadrão@teste.com</div>
-                                        <div class= "mt-2">
-                                            <p class="text-right" style="text-align: right;">AF4G2D</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- FIM QUADROS -->
+                            {% endfor %}
                         </div>
 
-                        <p class="text-center mb-0">
+                        <!--<p class="text-center mb-0">
                             <span class="text-primary"><strong>2</strong></span> de <span class="text-primary"><strong>10</strong></span>
-                        </p>
+                        </p>-->
                 
                         <!--  PAGINAÇÃO -->
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item">
+                            <ul class="pagination pagination.lg">
+                            {% for i in produtos.paginator.page_range %}
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="?page={{ i }}">
+                                    {{ i }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                            </ul>
+                            <!--<ul class="pagination justify-content-center">
+                                <li class="page-item" class="page-link">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                               <li class="page-item"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item"><a class="page-link" href="#">4</a></li>
@@ -214,7 +171,7 @@
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </nav>
                         <!--  FIM PAGINAÇÃO -->
                     </div>
@@ -227,7 +184,7 @@
                             <div class="card-body py-4">
                                 <div class="d-flex align-items-center">
                                     <div class="avatar avatar-xl">
-                                        <img src="assets/images/faces/1.jpg" alt="Face 1">
+                                        <img src="{% static 'images/faces/1.jpg' %}" alt="Face 1">
                                     </div>
                                     <div class="ms-3 name">
                                         <h5 class="font-bold">John Duck</h5>
@@ -235,7 +192,7 @@
                                     </div>
                                 </div>
                                 <div class="w-100 mt-3">
-                                    <a href="editar-usuario.html">
+                                    <a href="editar_usuario">
                                         <div class= "btn-success active text-center rounded">Editar</div>
                                     </a>
                                 </div>
@@ -262,13 +219,13 @@
         </div>
         <!-- FIM CORPO DA PÁGINA -->
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="vendors/apexcharts/apexcharts.js"></script>
+    <script src="js/pages/dashboard.js"></script>
 
-    <script src="assets/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

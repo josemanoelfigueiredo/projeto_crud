@@ -10,12 +10,12 @@
 
     <link rel="preconnect" href="{ static 'https://fonts.gstatic.com' %}">
     <link href="{% static 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
-    <link rel="stylesheet" href="{% static 'assets/vendors/perfect-scrollbar/perfect-scrollbar.css'  %}">
-    <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap-icons/bootstrap-icons.css'  %}">
-    <link rel="stylesheet" href="{% static 'assets/css/app.css'  %}">
-    <link rel="shortcut icon" href="{% static 'assets/images/favicon.svg'  %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.css'  %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/app.css'  %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg'  %}" type="image/x-icon">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="dashboard.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="dashboard.html"><img src="{% static 'images/logo/logo.png' %}" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -94,7 +94,7 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Registrar produto</li>
                                 </ol>
                             </nav>
@@ -107,42 +107,46 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form action="">
+                                    <form method = 'POST' enctype="multipart/form-data" action="{% url 'registrar_produto' %}">{% csrf_token %}
                                         <div class="form-group">
-                                            <label for="nome_produto"><h6>Nome do produto</h6></label>
-                                            <input type="text" class="form-control mb-3 w-100" id="nome_produto"
-                                                placeholder="Digite o nome do produto">
+                                            <label for="nome"><h6>Nome do produto</h6></label>
+                                            <input type="text" class="form-control mb-3 w-100" id="nome" name="nome"
+                                                placeholder="Digite o nome do produto: ">
                                         </div>
-
+                                        
                                         <div class="form-group">
                                             <label for="email"><h6>Email para contato</h6></label>
-                                            <input type="email" class="form-control mb-3 w-100" id="email"
+                                            <input type="email" class="form-control mb-3 w-100" id="email" name="email"
                                                 placeholder="Digite um email para contato">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="preco_produto"><h6>Preço do produto</h6></label>
-                                            <input type="number" class="form-control mb-3 w-100" id="preco_produto" value="0" min="0"
+                                            <label for="descricao"><h6>Descrição do produto</h6></label>
+                                            <textarea class="form-control mb-3 w-100" id="descricao" name="descricao" placeholder="Digite a descrição do produto:"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="preco"><h6>Preço do produto</h6></label>
+                                            <input type="number" class="form-control mb-3 w-100" id="preco" name="preco" value="0" min="0"
                                                 placeholder="Digite um preço para o produto">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="imagem_produto"><h6>Escolha uma imagem para o produto</h6></label>
-                                            <input type="file" class="form-control mb-3 w-100" id="imagem_produto">
+                                            <label for="foto_produto"><h6>Escolha uma imagem para o produto</h6></label>
+                                            <input type="file" class="form-control mb-3 w-100" id="foto_produto" name="foto_produto">
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
-                                                <label for="exampleFormControlTextarea1" class="form-label"><h6>Descrição</h6></label>
-                                                <textarea class="form-control w-100" id="exampleFormControlTextarea1"
-                                                    rows="3"></textarea>
+                                                <label for="data_produto" class="form-label"><h6>Data do Produto</h6></label>
+                                                <input type="date" class="form-control" id="data_produto" name="data_produto">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <h6>Categoria</h6>
                                             <fieldset class="form-group">
-                                                <select class="form-select" id="basicSelect">
+                                                <select class="form-select" id="basicSelect" name="categoria">
                                                     <option>Eletrônicos</option>
                                                     <option>Televisão</option>
                                                     <option>Computador</option>
@@ -180,10 +184,10 @@
         </div>
         <!-- FIM CORPO DA PÁGINA -->
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

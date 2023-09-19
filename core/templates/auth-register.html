@@ -1,15 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Mazer Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/auth.css' %}">
 </head>
 
 <body>
@@ -19,42 +21,42 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo mb-5">
-                        <img src="assets/images/logo/logo.png" alt="Logo">
+                        <img src="{% static 'images/logo/logo.png' %}" alt="Logo">
                     </div>
                     <h1 class="auth-title">Registro</h1>
 
-                    <form action="index.html">
+                    <form method="POST" action="{% 'cadastro_usuario' %}">{% csrf_token %}
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Email">
+                            <input type="text" class="form-control form-control-xl" placeholder="email" name="email">
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Nome completo">
+                            <input type="text" class="form-control form-control-xl" placeholder="nome" name="nome">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Username">
+                            <input type="text" class="form-control form-control-xl" placeholder="username" name="username">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
+                            <input type="password" class="form-control form-control-xl" placeholder="senha" name="senha">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Confirm Password">
+                            <input type="password" class="form-control form-control-xl" placeholder="confirmar_senha" name="confirmar_senha">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
@@ -64,7 +66,7 @@
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class='text-gray-600'>Já possui uma conta?
-                            <a href="index.html" class="font-bold">Login</a>
+                            <a href="/" class="font-bold">Login</a>
                         </p>
                     </div>
                 </div>

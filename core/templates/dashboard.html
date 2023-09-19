@@ -1,21 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Mazer Admin Dashboard</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com'  %}">
+    <link href="{% static 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap'  %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'  %}">
 
-    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css'  %}">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.css'  %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}" type="image/x-icon">
 </head>
 
 <body>
@@ -27,7 +29,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="dashboard.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="dashboard.html"><img src="{% static 'images/logo/logo.png' %}" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -52,13 +54,13 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="meus-produtos.html">Meus produtos</a>
+                                    <a href="meus_produtos.html">Meus produtos</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="registrar-produtos.html">Registrar produto</a>
+                                    <a href="registrar_produtos.html">Registrar produto</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="editar-produto.html">Editar produto</a>
+                                    <a href="editar_produto.html">Editar produto</a>
                                 </li>
                             </ul>
                         </li>
@@ -148,7 +150,7 @@
                                     <div class="m-2">
                                         <h4 class="mb-0">Nome do produto</h4>
                                         <p class="text-justify">Categoria</p>
-                                        <img src="assets\images\samples\default image.png" class="img-fluid rounded" alt="Responsive image">
+                                        <img src="{% static 'images\samples\default image.png' %}" class="img-fluid rounded" alt="Responsive image">
                                         <div class= "mt-2">
                                             <p class="text-justify mb-0">16/05/2021</p>
                                         </div>
@@ -171,7 +173,7 @@
                                     <div class="m-2">
                                         <h4 class="mb-0">Nome do produto</h4>
                                         <p class="text-justify">Categoria</p>
-                                        <img src="assets\images\samples\default image.png" class="img-fluid rounded" alt="Responsive image">
+                                        <img src="{% static 'images\samples\default image.png' %}" class="img-fluid rounded" alt="Responsive image">
                                         <div class= "mt-2">
                                             <p class="text-justify mb-0">16/05/2021</p>
                                         </div>
@@ -194,7 +196,7 @@
                                     <div class="m-2">
                                         <h4 class="mb-0">Nome do produto</h4>
                                         <p class="text-justify">Categoria</p>
-                                        <img src="assets\images\samples\default image.png" class="img-fluid rounded" alt="Responsive image">
+                                        <img src="{% static 'images\samples\default image.png' %}" class="img-fluid rounded" alt="Responsive image">
                                         <div class= "mt-2">
                                             <p class="text-justify mb-0">16/05/2021</p>
                                         </div>
@@ -253,7 +255,7 @@
                             <div class="card-body py-4">
                                 <div class="d-flex align-items-center">
                                     <div class="avatar avatar-xl">
-                                        <img src="assets/images/faces/1.jpg" alt="Face 1">
+                                        <img src="{% static 'images/faces/1.jpg' %}" alt="Face 1">
                                     </div>
                                     <div class="ms-3 name">
                                         <h5 class="font-bold">John Duck</h5>
@@ -261,7 +263,7 @@
                                     </div>
                                 </div>
                                 <div class="w-100 mt-3">
-                                    <a href="editar-usuario.html">
+                                    <a href="editar_usuario">
                                         <div class= "btn-success active text-center rounded">Editar</div>
                                     </a>
                                 </div>
@@ -289,13 +291,13 @@
         </div>
         <!-- FIM CORPO DA PÁGINA -->
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="vendors/apexcharts/apexcharts.js"></script>
+    <script src="js/pages/dashboard.js"></script>
 
-    <script src="assets/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
