@@ -41,7 +41,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="dashboard.html" class='sidebar-link'>
+                            <a href="{% url 'dashboard' %}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -54,19 +54,19 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="meus-produtos.html">Meus produtos</a>
+                                    <a href="{% url 'meus_produtos' %}">Meus produtos</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="registrar-produtos.html">Registrar produto</a>
+                                    <a href="{% url 'registrar_produto' %}">Registrar produto</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="editar-produto.html">Editar produto</a>
+                                    <a href="{% url 'meus_produtos' %}">Editar produto</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{% url 'logout' %}" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span>Sair</span>
                             </a>
@@ -105,6 +105,7 @@
                             </form>  
                         </div>
                         <!-- FIM BARRA DE PESQUISA -->
+
                         <div class="row">
                             {% for p in produtos %}
                                 <div class="col col-lg-4">
@@ -121,8 +122,8 @@
                                             </div>
                                             <div class= "mt-2 btn-primary active text-center rounded">R$ {{p.preco}}</div>
                                             <div class="row">
-                                                <a class="col" href="{% url 'editar_produto' p.id_produto %}"><div class="mt-2 btn-success text-center rounded cursor-pointer">Editar</div></a>
-                                                <a class="col" href=""><div class="mt-2 btn-danger text-center rounded cursor-pointer">Deletar</div></a>
+                                                <a class="col" href="{%  url 'editar_produto' p.id_produto  %}"><div class="mt-2 btn-success text-center rounded cursor-pointer">Editar</div></a>
+                                                <a class="col" href="{% url 'deletar_produto' p.id_produto %}"><div class="mt-2 btn-danger text-center rounded cursor-pointer">Deletar</div></a>
                                             </div>
                                             <hr>
                                             <div class= "mt-2">{{p.email}}</div>
@@ -192,7 +193,7 @@
                                     </div>
                                 </div>
                                 <div class="w-100 mt-3">
-                                    <a href="editar_usuario">
+                                    <a href="{% url 'editar_usuario' %}">
                                         <div class= "btn-success active text-center rounded">Editar</div>
                                     </a>
                                 </div>
@@ -219,13 +220,13 @@
         </div>
         <!-- FIM CORPO DA PÁGINA -->
     </div>
-    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-    <script src="vendors/apexcharts/apexcharts.js"></script>
-    <script src="js/pages/dashboard.js"></script>
+    <script src="{% static 'vendors/apexcharts/apexcharts.js' %}"></script>
+    <script src="{% static 'js/pages/dashboard.js' %}"></script>
 
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

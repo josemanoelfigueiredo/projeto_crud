@@ -39,7 +39,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="dashboard.html" class='sidebar-link'>
+                            <a href="{% url 'dashboard' %}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -52,19 +52,19 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="meus-produtos.html">Meus produtos</a>
+                                    <a href="{% url 'meus_produtos' %}">Meus produtos</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="registrar-produtos.html">Registrar produto</a>
+                                    <a href="{% url 'registrar_produto' %}">Registrar produto</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="editar-produto.html">Editar produto</a>
+                                    <a href="{% url 'meus_produtos' %}">Editar produto</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{% url 'logout' %}" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span>Sair</span>
                             </a>
@@ -89,13 +89,13 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Editar [nome do produto]</h3>
+                            <h3>Editar Usuario</h3>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Editar (nome do produto)</li>
+                                    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Editar usuario</li>
                                 </ol>
                             </nav>
                         </div>
@@ -103,39 +103,37 @@
                 </div>
                 <section class="section">
                     <div class="card">
-
+                     <form method="POST" action="" enctype="multipart/form-data" >{% csrf_token %}
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <label for="nome_produto"><h6>Nome Completo</h6></label>
-                                            <input type="text" class="form-control mb-3 w-100" id="nome_produto"
-                                                placeholder="Digite o nome do produto">
+                                    <div class="form-group position-relative has-icon-left mb-4">
+                                        <input type="text" class="form-control form-control-xl" placeholder="email" name="email" required>
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-envelope"></i>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="email"><h6>Email</h6></label>
-                                            <input type="email" class="form-control mb-3 w-100" id="email"
-                                                placeholder="Digite um email para contato">
+                                    </div>
+            
+                                    <div class="form-group position-relative has-icon-left mb-4">
+                                        <input type="text" class="form-control form-control-xl" placeholder="username" id="username" name="username" required>
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person"></i>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="senha"><h6>Senha</h6></label>
-                                            <input type="password" class="form-control mb-3 w-100" id="senha"
-                                                placeholder="Digite um email para contato">
+                                    </div>
+            
+                                    <div class="form-group position-relative has-icon-left mb-4">
+                                        <input type="text" class="form-control form-control-xl" placeholder="nome" name="nome" required>
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-person"></i>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="conf_senha"><h6>Confirmar Senha</h6></label>
-                                            <input type="password" class="form-control mb-3 w-100" id="conf_senha"
-                                                placeholder="Digite um email para contato">
+                                    </div>
+            
+                                    <div class="form-group position-relative has-icon-left mb-4">
+                                        <input type="password" class="form-control form-control-xl" placeholder="password" name="password" required>
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-shield-lock"></i>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="imagem_produto"><h6>Escolha uma foto de perfil</h6></label>
-                                            <input type="file" class="form-control mb-3 w-100" id="imagem_produto">
-                                        </div>
+                                    </div>
 
                                         <div class="col-md-6 mt-5">
                                             <button class=" btn btn-success my-2 my-sm-0 mt-3" type="submit">Editar produto</button>
@@ -166,10 +164,10 @@
         </div>
         <!-- FIM CORPO DA PÁGINA -->
     </div>
-    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

@@ -52,19 +52,19 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="meus-produtos.html">Meus produtos</a>
+                                    <a href="{% url 'meus_produtos' %}">Meus produtos</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="registrar-produtos.html">Registrar produto</a>
+                                    <a href="{% url 'registrar_produto' %}">Registrar produto</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="editar-produto.html">Editar produto</a>
+                                    <a href="{% url 'meus_produtos' %}">Editar produto</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{% url 'logout' %}" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-left"></i>
                                 <span>Sair</span>
                             </a>
@@ -89,13 +89,13 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Editar (nome do produto)</h3>
+                            <h3>Editar Produto</h3>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="dashboard">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Editar (nome do produto)</li>
+                                    <li class="breadcrumb-item"><a href="{% 'dashboard' %}">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Editar </li>
                                 </ol>
                             </nav>
                         </div>
@@ -107,40 +107,40 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form action="">
+                                    <form action=""  enctype="multipart/form-data" method="POST">{% csrf_token %}
                                         <div class="form-group">
                                             <label for="nome"><h6>Nome do produto</h6></label>
                                             <input type="text" class="form-control mb-3 w-100" id="nome" name="nome"
-                                                placeholder="Digite o nome do produto" required value="{{produto.nome}}">
+                                                placeholder="Digite o nome do produto" value="{{produto.nome}}">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="email"><h6>Email para contato</h6></label>
                                             <input type="email" class="form-control mb-3 w-100" id="email" name="email"
-                                                placeholder="Digite um email para contato" required value="{{produto.email}}">
+                                                placeholder="Digite um email para contato" value="{{produto.email}}">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="descricao"><h6>Descrição do produto</h6></label>
                                             <textarea class="form-control mb-3 w-100" id="descricao" name="descricao" placeholder="Digite a descrição do produto:" 
-                                            required value="{{produto.descricao}}"></textarea>
+                                             value="{{produto.descricao}}"></textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="preco"><h6>Preço do produto</h6></label>
                                             <input type="number" class="form-control mb-3 w-100" name="preco" id="preco" value="0" min="0"
-                                                placeholder="Digite um preço para o produto" required value="{{produto.preco}}">
+                                                placeholder="Digite um preço para o produto" value="{{produto.preco}}">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="foto_produto"><h6>Escolha uma imagem para o produto</h6></label>
-                                            <input type="file" class="form-control mb-3 w-100" id="foto_produto" name="foto_produto" required value="{{produto.foto_produto}}">
+                                            <input type="file" class="form-control mb-3 w-100" id="foto_produto" name="foto_produto" src="{{produto.foto_produto}}">
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 <label for="data_produto" class="form-label"><h6>Data do Produto</h6></label>
-                                                <input type="date" class="form-control" id="data_produto" name="data_produto" required value="{{produto.data_produto}}">
+                                                <input type="date" class="form-control" id="data_produto" name="data_produto" value="{{produto.data_produto}}">
                                             </div>
                                         </div>
 
@@ -188,10 +188,10 @@
         </div>
         <!-- FIM CORPO DA PÁGINA -->
     </div>
-    <script src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

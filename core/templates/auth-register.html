@@ -25,38 +25,38 @@
                     </div>
                     <h1 class="auth-title">Registro</h1>
 
-                    <form method="POST" action="{% 'cadastro_usuario' %}">{% csrf_token %}
+                    <form method="POST" action="{% url 'registrar_usuario' %}">{% csrf_token %}
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="email" name="email">
+                            <input type="text" class="form-control form-control-xl" placeholder="email" name="email" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="nome" name="nome">
+                            <input type="text" class="form-control form-control-xl" placeholder="username" id="username" name="username" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="username" name="username">
+                            <input type="text" class="form-control form-control-xl" placeholder="nome" name="nome_usuario" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="senha" name="senha">
+                            <input type="password" class="form-control form-control-xl" placeholder="password" name="password" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
 
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="confirmar_senha" name="confirmar_senha">
+                            <input type="password" class="form-control form-control-xl" placeholder="confirmar_senha" name="confirmar_senha" required>
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
@@ -66,7 +66,7 @@
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class='text-gray-600'>Já possui uma conta?
-                            <a href="/" class="font-bold">Login</a>
+                            <a href="{% url 'login' %}" class="font-bold">Login</a>
                         </p>
                     </div>
                 </div>
