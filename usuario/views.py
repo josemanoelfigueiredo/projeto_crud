@@ -52,19 +52,18 @@ def editar_usuario(request):
     if request.method == 'POST':
         nome = request.POST.get('nome')
         username = request.POST.get('username')
-        password = request.POST.get('password')
+        newpassword = request.POST.get('password')
         email = request.POST.get('email')
 
            
         usuario.nome = nome
-        usuario.username = username
-        usuario.password = password
-        usuario.email = email
+        usuario.user.username = username
+        usuario.user.set_password(newpassword)
+        usuario.user.email = email
         usuario.save()
         print('chegou1')
         
     context = {
         'usuario': usuario
     }
-
     return render(request, 'editar-usuario.html', context)
